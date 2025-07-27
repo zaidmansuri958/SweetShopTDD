@@ -134,6 +134,29 @@ npm test
 # 🧪 Test-Driven Development (TDD)
 This project follows a strict TDD workflow. Every feature begins with writing test cases using Jest and then implementing the code to pass those tests.
 
+# 💡 AI Assistance
+During the development of this project, I utilized AI-based tools like:
+
+ChatGPT (OpenAI)
+
+Claude (Anthropic)
+
+## These tools were instrumental in helping with:
+
+➡️Clarifying complex programming concepts
+
+➡️Generating boilerplate code and component structure
+
+➡️Debugging issues quickly
+
+➡️Following the Test-Driven Development (TDD) workflow
+
+➡️Writing and organizing unit tests for both frontend and backend
+
+➡️Structuring project files and improving overall development productivity
+
+While all logic and implementation were thoroughly reviewed and customized, these tools served as collaborative assistants, improving efficiency and quality throughout the build process.
+
 # 📸 ScreenShots
 
 ![Sweet Shop Screenshot](https://github.com/zaidmansuri958/SweetShopTDD/blob/a46b071de0001ceeb5408d7c044371b18348a324/Images/image%20(1).png)
