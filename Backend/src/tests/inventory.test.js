@@ -52,4 +52,16 @@ describe('Inventory API', () => {
 
     expect(res.statusCode).toBe(200);
   });
+
+   it('should not purchase if quantity is 0', async () => {
+    // Assume we already purchased all. You'll simulate 0 quantity in your logic.
+    const res = await request(app)
+      .post(`/api/inventory/${sweetId}/purchase`)
+      .set('Authorization', `Bearer ${token}`);
+
+    expect(res.statusCode).toBe(400);
+
+  });
 })
+
+ 
