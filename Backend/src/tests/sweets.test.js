@@ -73,4 +73,12 @@ describe('Sweet API', () => {
     expect(res.statusCode).toBe(200);
   });
 
+  it('should delete a sweet', async () => {
+    const res = await request(app)
+      .delete(`/api/sweets/${sweetId}`)
+      .set('Authorization', `Bearer ${token}`);
+
+    expect(res.statusCode).toBe(200);
+  });
+
 });
