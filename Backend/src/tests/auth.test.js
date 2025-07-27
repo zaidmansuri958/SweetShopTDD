@@ -101,5 +101,17 @@ describe('Auth API', () => {
 
     expect(res.statusCode).toBe(400); // or 500 if no validation is done
   });
-  
+
+  it('should register user with admin role', async () => {
+    const res = await request(app).post('/api/auth/register').send({
+      name: 'AdminUser',
+      email: 'adminuser@example.com',
+      password: 'adminpass',
+      role: 'admin'
+    });
+
+    expect(res.statusCode).toBe(201);
+    expect(res.body.user.role).toBe('admin');
+  });
+
 });
