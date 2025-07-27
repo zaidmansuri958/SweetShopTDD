@@ -64,4 +64,13 @@ describe('Sweet API', () => {
     expect(res.statusCode).toBe(200);
   });
 
+  it('should update a sweet', async () => {
+    const res = await request(app)
+      .put(`/api/sweets/${sweetId}`)
+      .set('Authorization', `Bearer ${token}`)
+      .send({ price: 150 });
+
+    expect(res.statusCode).toBe(200);
+  });
+
 });
