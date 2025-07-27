@@ -3,7 +3,7 @@ const router = express.Router();
 import {
     purchaseSweet,restockSweet
 } from '../controllers/inventoryController.js';
-import { auth ,isAdmin} from '../middlewares/auth';
+import { auth ,isAdmin} from '../middlewares/auth.js';
 
 // ✅ Log to verify imports
 console.log({ purchaseSweet});
