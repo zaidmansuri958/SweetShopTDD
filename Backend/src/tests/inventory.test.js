@@ -111,4 +111,12 @@ describe('Inventory API', () => {
         expect(res.statusCode).toBe(401); // or 403 depending on your middleware
     });
 
+    it('should not allow restock without auth', async () => {
+        const res = await request(app)
+            .post(`/api/inventory/${sweetId}/restock`)
+            .send({ quantity: 5 });
+
+        expect(res.statusCode).toBe(401); // or 403
+    });
+
 });
