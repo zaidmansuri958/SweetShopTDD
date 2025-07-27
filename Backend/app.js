@@ -7,7 +7,8 @@ app.use(cors()); // ✅ Apply CORS early
 app.use(express.json()); // ✅ Parse JSON
 
 // Routes
-const authRoutes = require('./routes/auth.routes.js');
+import authRoutes from './src/routes/auth.routes.js';
+
 
 app.use('/api/auth', authRoutes);
 
@@ -22,4 +23,4 @@ app.use((req, res) => {
   res.status(404).json({ error: 'Route not found' });
 });
 
-module.exports = app;
+export default app;
