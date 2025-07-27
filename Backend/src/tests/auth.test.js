@@ -65,4 +65,13 @@ describe('Auth API', () => {
     expect(res.statusCode).toBe(200);
     expect(res.body).toHaveProperty('token');
   });
+
+   it('should not login wrong password', async () => {
+    const res = await request(app).post('/api/auth/login').send({
+      email: 'login@example.com',
+      password: 'wrong'
+    });
+
+    expect(res.statusCode).toBe(401);
+  });
 });
