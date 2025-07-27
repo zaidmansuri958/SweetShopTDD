@@ -10,3 +10,8 @@ export const createSweet = async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 };
+
+export const getAllSweets = async (req, res) => {
+  const sweets = await Sweet.find();
+  res.status(200).json(sweets);
+};

@@ -8,4 +8,7 @@ const router = express.Router();
 // Admin-only routes
 router.post('/', auth, isAdmin, sweetController.createSweet);
 
+// Public routes
+router.get('/', sweetController.getAllSweets);
+
 export default router;
