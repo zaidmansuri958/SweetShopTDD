@@ -83,4 +83,14 @@ describe('Auth API', () => {
 
     expect(res.statusCode).toBe(400); // or 500 depending on your validation
   });
+
+  it('should not login non-existent email', async () => {
+    const res = await request(app).post('/api/auth/login').send({
+      email: 'notfound@example.com',
+      password: 'doesntmatter'
+    });
+
+    expect(res.statusCode).toBe(401);
+    expect(res.body.message).toBe('Invalid email or password');
+  });
 });
