@@ -49,4 +49,20 @@ describe('Auth API', () => {
 
     expect(res.statusCode).toBe(400);
   });
+
+  it('should login a user', async () => {
+    await request(app).post('/api/auth/register').send({
+      name: 'LoginUser',
+      email: 'login@example.com',
+      password: 'mypassword'
+    });
+
+    const res = await request(app).post('/api/auth/login').send({
+      email: 'login@example.com',
+      password: 'mypassword'
+    });
+
+    expect(res.statusCode).toBe(200);
+    expect(res.body).toHaveProperty('token');
+  });
 });
