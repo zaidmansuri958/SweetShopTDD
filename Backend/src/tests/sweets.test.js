@@ -44,7 +44,7 @@ describe('Sweet API', () => {
 
     expect(res.statusCode).toBe(201);
     expect(res.body).toHaveProperty('_id');
-    sweetId = res.body.id;
+    sweetId = res.body._id;
   });
 
   it('should get all sweets', async () => {
