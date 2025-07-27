@@ -90,4 +90,12 @@ describe('Sweet API', () => {
         expect(res.statusCode).toBe(400);
     });
 
+    it('should return 404 when deleting non-existent sweet', async () => {
+        const res = await request(app)
+            .delete('/api/sweets/64cb1234567890abcdef1234')
+            .set('Authorization', `Bearer ${token}`);
+
+        expect(res.statusCode).toBe(404);
+    });
+
 });
