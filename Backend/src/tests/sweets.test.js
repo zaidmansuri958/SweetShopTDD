@@ -98,4 +98,13 @@ describe('Sweet API', () => {
         expect(res.statusCode).toBe(404);
     });
 
+    it('should return empty array when no sweets match search', async () => {
+        const res = await request(app)
+            .get('/api/sweets/search?name=DoesNotExist')
+            .set('Authorization', `Bearer ${token}`);
+
+        expect(res.statusCode).toBe(200);
+        expect(res.body).toEqual([]);
+    });
+
 });
