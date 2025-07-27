@@ -1,6 +1,5 @@
-const request = require('supertest');
-const app = require('../app.js');
-
+import supertest from 'supertest';
+import app from '../'
 describe('Auth API', () => {
   it('should register a user', async () => {
     const res = await request(app).post('/api/auth/register').send({
