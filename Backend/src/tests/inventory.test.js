@@ -75,4 +75,14 @@ describe('Inventory API', () => {
     expect(res.body.message).toBe('Sweet out of stock');
   });
 
+    it('should not restock with invalid quantity', async () => {
+  const res = await request(app)
+    .post(`/api/inventory/${sweetId}/restock`)
+    .set('Authorization', `Bearer ${adminToken}`)
+    .send({ quantity: 0 }); // or -5
+
+  expect(res.statusCode).toBe(400);
+  expect(res.body.message).toBe('Quantity must be greater than 0');
+});
+
 });
