@@ -104,4 +104,11 @@ describe('Inventory API', () => {
         expect(res.body.error).toBe('Sweet not found');
     });
 
+    it('should not allow purchase without auth', async () => {
+        const res = await request(app)
+            .post(`/api/inventory/${sweetId}/purchase`);
+
+        expect(res.statusCode).toBe(401); // or 403 depending on your middleware
+    });
+
 });
