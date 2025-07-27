@@ -23,10 +23,16 @@ const Login = () => {
         role: loginAs,
       });
 
-      const { token } = response.data;
+      const { token, user } = response.data;
       localStorage.setItem('token', token);
+      localStorage.setItem('role', user.role);
+
       setIsLoading(false);
-      navigate('/dashboard');
+      if (user.role === 'admin') {
+        navigate('/admin');
+      } else {
+        navigate('/dashboard');
+      }
     } catch (error) {
       setIsLoading(false);
       if (error.response) {
