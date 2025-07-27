@@ -93,4 +93,13 @@ describe('Auth API', () => {
     expect(res.statusCode).toBe(401);
     expect(res.body.message).toBe('Invalid email or password');
   });
+
+  it('should not login without password', async () => {
+    const res = await request(app).post('/api/auth/login').send({
+      email: 'login@example.com'
+    });
+
+    expect(res.statusCode).toBe(400); // or 500 if no validation is done
+  });
+  
 });
