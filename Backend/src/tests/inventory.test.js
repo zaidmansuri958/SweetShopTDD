@@ -94,4 +94,14 @@ describe('Inventory API', () => {
         expect(res.body.error).toBe('Sweet not found');
     });
 
+    it('should return 404 for invalid sweet ID on restock', async () => {
+        const res = await request(app)
+            .post(`/api/inventory/64cb1234567890abcdef9999/restock`)
+            .set('Authorization', `Bearer ${adminToken}`)
+            .send({ quantity: 5 });
+
+        expect(res.statusCode).toBe(404);
+        expect(res.body.error).toBe('Sweet not found');
+    });
+
 });
