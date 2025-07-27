@@ -55,5 +55,13 @@ describe('Sweet API', () => {
     expect(res.statusCode).toBe(200);
     expect(Array.isArray(res.body)).toBe(true);
   });
-  
+
+  it('should search sweets by name', async () => {
+    const res = await request(app)
+      .get('/api/sweets/search?name=Ladoo')
+      .set('Authorization', `Bearer ${token}`);
+
+    expect(res.statusCode).toBe(200);
+  });
+
 });
