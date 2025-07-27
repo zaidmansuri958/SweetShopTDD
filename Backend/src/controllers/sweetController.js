@@ -15,3 +15,14 @@ export const getAllSweets = async (req, res) => {
   const sweets = await Sweet.find();
   res.status(200).json(sweets);
 };
+
+export const searchSweets = async (req, res) => {
+  const { name, category } = req.query;
+  const query = {};
+
+  if (name) query.name = { $regex: name, $options: 'i' };
+  if (category) query.category = { $regex: category, $options: 'i' };
+
+  const sweets = await Sweet.find(query);
+  res.status(200).json(sweets);
+};

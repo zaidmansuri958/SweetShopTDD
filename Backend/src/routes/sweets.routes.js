@@ -10,5 +10,6 @@ router.post('/', auth, isAdmin, sweetController.createSweet);
 
 // Public routes
 router.get('/', sweetController.getAllSweets);
+router.get('/search', sweetController.searchSweets);
 
 export default router;
