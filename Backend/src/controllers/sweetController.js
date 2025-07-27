@@ -1,4 +1,4 @@
-import Sweet from '../models/Sweet';
+import Sweet from '../models/Sweet.js';
 
 // Create a sweet
 export const createSweet = async (req, res) => {
