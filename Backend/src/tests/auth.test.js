@@ -74,4 +74,13 @@ describe('Auth API', () => {
 
     expect(res.statusCode).toBe(401);
   });
+
+  it('should not register without email', async () => {
+    const res = await request(app).post('/api/auth/register').send({
+      name: 'NoEmail',
+      password: '123456'
+    });
+
+    expect(res.statusCode).toBe(400); // or 500 depending on your validation
+  });
 });
