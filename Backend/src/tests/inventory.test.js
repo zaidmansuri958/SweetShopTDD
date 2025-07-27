@@ -62,6 +62,15 @@ describe('Inventory API', () => {
     expect(res.statusCode).toBe(400);
 
   });
+
+    it('should restock sweet', async () => {
+    const res = await request(app)
+      .post(`/api/inventory/${sweetId}/restock`)
+      .set('Authorization', `Bearer ${token}`)
+      .send({ quantity: 10 });
+
+    expect(res.statusCode).toBe(200);
+  });
 })
 
  
