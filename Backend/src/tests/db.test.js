@@ -9,11 +9,11 @@ jest.unstable_mockModule('mongoose', () => ({
   },
 }));
 
-const { connectToDatabase } = await import('../utils/db.js');
+const connectDB = (await import('../config/db.js')).default;
 
 describe('MongoDB Connection', () => {
   it('should connect to MongoDB Atlas', async () => {
-    const db = await connectToDatabase();
+    const db = await connectDB();
     expect(mockConnect).toHaveBeenCalled();
     expect(db.connection).toBe('mocked');
   });
