@@ -1,16 +1,33 @@
 import request from 'supertest';
-import app from '../app.js'
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import app from '../../app.js';
+import connectDB from '../config/db.js';
+import User from '../models/User.js';  
+import Sweet from '../models/Sweet.js';
+
+dotenv.config();
 
 let token = '';
 let sweetId = '';
 
 beforeAll(async () => {
+  await connectDB();
+  await User.deleteMany({});
+  await Sweet.deleteMany({});
+
   const res = await request(app).post('/api/auth/register').send({
     name: 'Admin',
     email: 'admin@example.com',
-    password: 'adminpass'
+    password: 'adminpass',
+    role:'admin'
   });
+
   token = res.body.token;
+});
+
+afterAll(async () => {
+  await mongoose.connection.close();
 });
 
 describe('Sweet API', () => {
@@ -26,7 +43,7 @@ describe('Sweet API', () => {
       });
 
     expect(res.statusCode).toBe(201);
+    expect(res.body).toHaveProperty('_id');
     sweetId = res.body.id;
   });
-
-})
+});
