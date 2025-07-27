@@ -107,4 +107,12 @@ describe('Sweet API', () => {
         expect(res.body).toEqual([]);
     });
 
+    it('should reject unauthenticated sweet creation', async () => {
+        const res = await request(app)
+            .post('/api/sweets')
+            .send({ name: 'Jalebi', price: 50 });
+
+        expect(res.statusCode).toBe(401); // or 403 depending on your auth middleware
+    });
+
 });
